@@ -1,0 +1,50 @@
+.menu-button {
+	background:none;
+	color:inherit;
+	border:none;
+	font: inherit;
+	cursor: pointer;
+}
+
+.top-menu-button {
+	padding:0 0.5vw 0.2vh 0.5vw;
+}
+
+.submenu-button {
+	color: #1f593c;
+}
+
+.active-submenu-button {
+	color: #5fFFB1;
+}
+
+.active-menu-button {
+	border: #5FFFB1 solid 3px;
+	border-bottom: none;
+}
+
+.top-menu > ul, .submenu > ul {
+	list-style-type: none;
+}
+
+.top-menu > ul > li, .submenu > ul > li {
+	display: inline-block;
+	margin-left: 1.5vw;
+	text-transform: uppercase;
+}
+
+body {
+	background: #001300;
+	/* color: #69FBBB; */
+	color: #5fFFB1;
+}
+
+.top-menu {
+	border-bottom: #5FFFB1 solid 3px;
+	margin-bottom: -1vh;
+	padding-bottom: -1vh;
+}
+
+.top-menu > ul {
+	margin-bottom: 0;
+}

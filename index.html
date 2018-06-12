@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>Pip-Boy 3000 Mark IV</title>
+	<meta name="description" content="Pip-Boy 3000 Mark IV">
+	<meta name="author" content="thunderblaster">
+
+	<link rel="stylesheet" href="css/styles.css?v=1.0">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script defer src="js/app.js"></script>
+</head>
+<body>
+	<div id="vue-app">
+		<div class="menu-system">
+			<div class="top-menu">
+				<ul>
+					<li v-for="(menu, index) in menus">
+						<button v-if="activeMenu===index" class="top-menu-button active-menu-button menu-button">{{menu.name}}</button>
+						<button v-else @click="switchMenu(index)" class="top-menu-button menu-button">{{menu.name}}</button>
+					</li>
+				</ul>
+			</div>
+			<div class="submenu">
+				<ul>
+					<li v-for="(submenu, index) in menus[activeMenu].submenus">
+							<button v-if="activeSubMenu===index" class="active-submenu-button submenu-button menu-button">{{submenu.name}}</button>
+							<button v-else @click="activeSubMenu=index" class="submenu-button menu-button">{{submenu.name}}</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="body">
+			<p v-if="menus[activeMenu].submenus.length>0">You are viewing the {{menus[activeMenu].submenus[activeSubMenu].name}} screen.</p>
+			<p v-else>You are viewing the {{menus[activeMenu].name}} screen.</p>
+		</div>
+	</div> <!-- /app -->
+</body>
