@@ -1,3 +1,8 @@
+@font-face {
+    font-family: monofonto;
+    src: url(monofonto.ttf);
+}
+
 .menu-button {
 	background:none;
 	color:inherit;
@@ -37,6 +42,7 @@ body {
 	background: #001300;
 	/* color: #69FBBB; */
 	color: #5fFFB1;
+	font-family: monofonto, serif;
 }
 
 .top-menu {
