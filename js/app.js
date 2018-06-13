@@ -78,7 +78,25 @@ var app = new Vue({
 		switchMenu: function (index) {
 			this.activeSubMenu = 0;
 			this.activeMenu = index;
-		}
+		},
+		keyEventHandler: function (e) {
+			//console.log("key pressed: " + e.which);
+			if(e.which===37&&this.activeSubMenu>0) {
+				this.activeSubMenu--;
+			}
+			if(e.which===39&&this.activeSubMenu<this.menus[this.activeMenu].submenus.length-1) {
+				this.activeSubMenu++;
+			}
+			if(e.which===33&&this.activeMenu<this.menus.length-1) {
+				this.switchMenu(this.activeMenu+1);
+			}
+			if(e.which===34&&this.activeMenu>0) {
+				this.switchMenu(this.activeMenu-1);
+			}
+		},
+	},
+	mounted: function() {
+		window.addEventListener('keyup', this.keyEventHandler);
 	}
 });
 

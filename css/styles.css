@@ -43,6 +43,7 @@ body {
 	/* color: #69FBBB; */
 	color: #5fFFB1;
 	font-family: monofonto, serif;
+	font-size: 150%;
 }
 
 .top-menu {
@@ -53,4 +54,8 @@ body {
 
 .top-menu > ul {
 	margin-bottom: 0;
+}
+
+.body {
+	padding: 0.5em 3em;
 }

@@ -9,3 +9,8 @@ GOALS
 * Support mouse/touch. Ensure a phone or tablet with no other input can access all screens.
 * Support keyboard-only. Ensure a raspberry pi with buttons emulating a keyboard can access all screens.
 * Support resolutions from 320x480 to 1080x1920. Cheap LCD HATs should work as well as any other device.
+
+USE
+-----
+* Page Up and Page Down cycle top-level menus
+* Left arrow and Right arrow cycle submenus
