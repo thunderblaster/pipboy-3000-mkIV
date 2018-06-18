@@ -95,6 +95,25 @@ var app = new Vue({
 			}
 		},
 	},
+	computed: {
+		visibleSubMenus: function () {
+			var visibleSubMenus = [];
+			if(this.activeSubMenu>1) {
+				visibleSubMenus.push(this.menus[this.activeMenu].submenus[this.activeSubMenu-2]);
+			}
+			if(this.activeSubMenu>0) {
+				visibleSubMenus.push(this.menus[this.activeMenu].submenus[this.activeSubMenu-1]);
+			}
+			visibleSubMenus.push(this.menus[this.activeMenu].submenus[this.activeSubMenu]);
+			if(this.activeSubMenu<this.menus[this.activeMenu].submenus.length) {
+				visibleSubMenus.push(this.menus[this.activeMenu].submenus[this.activeSubMenu+1]);
+			}
+			if(this.activeSubMenu+1<this.menus[this.activeMenu].submenus.length) {
+				visibleSubMenus.push(this.menus[this.activeMenu].submenus[this.activeSubMenu+2]);
+			}
+			return visibleSubMenus;
+		}
+	},
 	mounted: function() {
 		window.addEventListener('keyup', this.keyEventHandler);
 	}

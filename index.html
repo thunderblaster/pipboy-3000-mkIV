@@ -25,7 +25,7 @@
 			</div>
 			<div class="submenu">
 				<ul>
-					<li v-for="(submenu, index) in menus[activeMenu].submenus">
+					<li v-for="(submenu, index) in visibleSubMenus">
 							<button v-if="activeSubMenu===index" autofocus class="active-submenu-button submenu-button menu-button">{{submenu.name}}</button>
 							<button v-else @click="activeSubMenu=index" class="submenu-button menu-button">{{submenu.name}}</button>
 					</li>
