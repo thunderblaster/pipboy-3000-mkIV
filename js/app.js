@@ -17,6 +17,7 @@ var app = new Vue({
 						name: "Perks",
 					},
 				],
+				submenuClasses: "submenu submenu-scoot-left",
 			},
 			{
 				name: "Inv",
@@ -43,6 +44,7 @@ var app = new Vue({
 						name: "Ammo",
 					},
 				],
+				submenuClasses: "submenu",
 			},
 			{
 				name: "Data",
@@ -63,6 +65,7 @@ var app = new Vue({
 						name: "Crime",
 					},
 				],
+				submenuClasses: "submenu submenu-scoot-right",
 			},
 			{
 				name: "Map",

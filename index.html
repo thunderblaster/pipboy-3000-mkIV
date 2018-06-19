@@ -23,12 +23,13 @@
 					</li>
 				</ul>
 			</div>
-			<div class="submenu">
+			<div v-if="menus[activeMenu].submenus.length>0" :class="menus[activeMenu].submenuClasses">
 				<ul>
-					<li v-for="(submenu, index) in menus[activeMenu].submenus">
-							<button v-if="activeSubMenu===index" autofocus class="active-submenu-button submenu-button menu-button">{{submenu.name}}</button>
-							<button v-else @click="activeSubMenu=index" class="submenu-button menu-button">{{submenu.name}}</button>
-					</li>
+					<li><button v-if="activeSubMenu>1" @click="activeSubMenu=activeSubMenu-2" class="submenu-button menu-button submenu-fade">{{menus[activeMenu].submenus[activeSubMenu-2].name}}</button></li>
+					<li><button v-if="activeSubMenu>0" @click="activeSubMenu=activeSubMenu-1" class="submenu-button menu-button">{{menus[activeMenu].submenus[activeSubMenu-1].name}}</button></li>
+					<li><button v-if="menus[activeMenu].submenus.length>0" class="submenu-button menu-button active-submenu-button">{{menus[activeMenu].submenus[activeSubMenu].name}}</button></li>
+					<li><button v-if="activeSubMenu+1<menus[activeMenu].submenus.length" @click="activeSubMenu=activeSubMenu+1" class="submenu-button menu-button">{{menus[activeMenu].submenus[activeSubMenu+1].name}}</button></li>
+					<li><button v-if="activeSubMenu+2<menus[activeMenu].submenus.length" @click="activeSubMenu=activeSubMenu+2" class="submenu-button menu-button submenu-fade">{{menus[activeMenu].submenus[activeSubMenu+2].name}}</button></li>
 				</ul>
 			</div>
 		</div>
