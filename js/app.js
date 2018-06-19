@@ -12,6 +12,37 @@ var app = new Vue({
 					},
 					{
 						name: "Special",
+						type: "List",
+						items: [
+							{
+								name: "Strength",
+								value: "7",
+							},
+							{
+								name: "Perception",
+								value: "7",
+							},
+							{
+								name: "Endurance",
+								value: "7",
+							},
+							{
+								name: "Charisma",
+								value: "7",
+							},
+							{
+								name: "Intelligence",
+								value: "7",
+							},
+							{
+								name: "Agility",
+								value: "7",
+							},
+							{
+								name: "Luck",
+								value: "7",
+							},
+						]
 					},
 					{
 						name: "Perks",

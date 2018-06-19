@@ -34,8 +34,10 @@
 			</div>
 		</div>
 		<div class="body">
-			<p v-if="menus[activeMenu].submenus.length>0">You are viewing the {{menus[activeMenu].submenus[activeSubMenu].name}} screen.</p>
-			<p v-else>You are viewing the {{menus[activeMenu].name}} screen.</p>
+			<div v-if="menus[activeMenu].submenus.length>0"><p>You are viewing the {{menus[activeMenu].submenus[activeSubMenu].name}} screen.</p>
+				<div v-if="menus[activeMenu].submenus[activeSubMenu].type==='List'">This is the list view.</div>
+			</div>
+			<div v-else><p>You are viewing the {{menus[activeMenu].name}} screen.</p></div>
 		</div>
 	</div> <!-- /app -->
 </body>
