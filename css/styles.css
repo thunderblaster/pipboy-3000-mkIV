@@ -14,6 +14,7 @@
 .top-menu-button {
 	padding:0 0.5vw 0.2vh 0.5vw;
 	font-weight: bold;
+	text-shadow: 0 0 3px #5FFFB1;
 }
 
 .submenu-button {
@@ -27,11 +28,13 @@
 .active-submenu-button {
 	color: #5fFFB1;
 	font-weight: bold;
+	text-shadow: 0 0 3px #5FFFB1;
 }
 
 .active-menu-button {
 	border: #5FFFB1 solid 3px;
 	border-bottom: none;
+
 }
 
 .top-menu > ul, .submenu > ul {
