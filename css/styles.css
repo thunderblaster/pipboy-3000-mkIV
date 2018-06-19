@@ -13,19 +13,28 @@
 
 .top-menu-button {
 	padding:0 0.5vw 0.2vh 0.5vw;
+	font-weight: bold;
+	text-shadow: 0 0 3px #5FFFB1;
 }
 
 .submenu-button {
 	color: #1f593c;
 }
 
+.submenu-fade {
+	color: #053522
+}
+
 .active-submenu-button {
 	color: #5fFFB1;
+	font-weight: bold;
+	text-shadow: 0 0 3px #5FFFB1;
 }
 
 .active-menu-button {
 	border: #5FFFB1 solid 3px;
 	border-bottom: none;
+
 }
 
 .top-menu > ul, .submenu > ul {
@@ -34,9 +43,19 @@
 
 .top-menu > ul > li, .submenu > ul > li {
 	display: inline-block;
-	margin-left: 1.5vw;
 	text-transform: uppercase;
+	padding-left: 0;
 }
+
+.top-menu > ul > li {
+	width: 15vw;
+}
+
+.submenu > ul > li, .submenu > ul > li > button {
+	width: 8vw;
+}
+
+
 
 body {
 	background: #001300;
@@ -50,6 +69,12 @@ body {
 	border-bottom: #5FFFB1 solid 3px;
 	margin-bottom: -1vh;
 	padding-bottom: -1vh;
+	padding-left: 10vw;
+	font-size: 130%;
+}
+
+.submenu {
+	padding-left: 6vw;
 }
 
 .top-menu > ul {
@@ -58,4 +83,12 @@ body {
 
 .body {
 	padding: 0.5em 3em;
+}
+
+.submenu-scoot-left {
+	margin-left: -15vw;
+}
+
+.submenu-scoot-right {
+	margin-left: 15.5vw;
 }
