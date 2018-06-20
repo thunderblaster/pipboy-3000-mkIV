@@ -3,6 +3,7 @@ var app = new Vue({
 	data: {
 		activeMenu: 0,
 		activeSubMenu: 0,
+		activeListItem: 0,
 		menus: [
 			{
 				name: "Stat",
@@ -46,6 +47,16 @@ var app = new Vue({
 					},
 					{
 						name: "Perks",
+						type: "List",
+						items: [
+							{
+								name: "Iron Fist",
+								quantity: 2,
+							},
+							{
+								name: "Locksmith",
+							},
+						]
 					},
 				],
 				submenuClasses: "submenu submenu-scoot-left",
@@ -55,24 +66,84 @@ var app = new Vue({
 				submenus: [
 					{
 						name: "Weapons",
+						type: "List",
+						items: [
+							{
+								name: "Sawed-off Double Barrel Shotgun",
+								equipped: true,
+								favorite: true,
+							},
+							{
+								name: "10mm Pistol",
+								quantity: 2,
+							},
+						]
 					},
 					{
 						name: "Apparel",
+						type: "List",
+						items: [
+							{
+								name: "T-Shirt",
+								equipped: true,
+							},
+							{
+								name: "Jeans",
+								equipped: true,
+							},
+						]
 					},
 					{
 						name: "Aid",
+						type: "List",
+						items: [
+							{
+								name: "Band-Aids",
+							},
+						]
 					},
 					{
 						name: "Misc",
+						type: "List",
+						items: [
+							{
+								name: "Swiss Army Knife",
+							},
+						]
 					},
 					{
 						name: "Junk",
+						type: "List",
+						items: [
+							{
+								name: "iPhone",
+								equipped: true,
+							},
+						]
 					},
 					{
 						name: "Mods",
+						type: "List",
+						items: [
+							{
+								name: "Silencer",
+							},
+						]
 					},
 					{
 						name: "Ammo",
+						type: "List",
+						items: [
+							{
+								name: "12ga Shell",
+								equipped: true,
+								quantity: 2,
+							},
+							{
+								name: "10mm Round",
+								quantity: 15,
+							}
+						]
 					},
 				],
 				submenuClasses: "submenu",
@@ -111,21 +182,32 @@ var app = new Vue({
 	methods: {
 		switchMenu: function (index) {
 			this.activeSubMenu = 0;
+			this.activeListItem = 0;
 			this.activeMenu = index;
+		},
+		switchSubMenu: function (index) {
+			this.activeListItem = 0;
+			this.activeSubMenu = index;
 		},
 		keyEventHandler: function (e) {
 			//console.log("key pressed: " + e.which);
 			if(e.which===37&&this.activeSubMenu>0) {
-				this.activeSubMenu--;
+				this.switchSubMenu(this.activeSubMenu-1);
 			}
 			if(e.which===39&&this.activeSubMenu<this.menus[this.activeMenu].submenus.length-1) {
-				this.activeSubMenu++;
+				this.switchSubMenu(this.activeSubMenu+1);
 			}
 			if(e.which===33&&this.activeMenu<this.menus.length-1) {
 				this.switchMenu(this.activeMenu+1);
 			}
 			if(e.which===34&&this.activeMenu>0) {
 				this.switchMenu(this.activeMenu-1);
+			}
+			if(e.which===38&&this.activeListItem>0) {
+				this.activeListItem--;
+			}
+			if(e.which===40&&this.activeListItem<this.menus[this.activeMenu].submenus[this.activeSubMenu].items.length-1) {
+				this.activeListItem++;
 			}
 		},
 	},

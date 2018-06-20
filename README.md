@@ -14,3 +14,4 @@ USE
 -----
 * Page Up and Page Down cycle top-level menus
 * Left arrow and Right arrow cycle submenus
+* Up and Down arrows change highlighted item

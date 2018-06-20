@@ -92,3 +92,58 @@ body {
 .submenu-scoot-right {
 	margin-left: 15.5vw;
 }
+
+.align-left {
+	float: left;
+}
+
+.align-right {
+	float: right;
+}
+
+.left-column.list-view, .right-column.list-view {
+	width: 45%;
+}
+
+.list-view > ul {
+	list-style-type: none;
+}
+.list-view > ul > li {
+	clear: both;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.active-list-item {
+	background: #5fFFB1;
+	color: #001300;
+
+}
+
+.list-item {
+	cursor: pointer;
+	padding: 0 0.75em;
+	display: inline-block;
+	width: 88%;
+	overflow-x: hidden;
+	vertical-align: bottom; /* https://stackoverflow.com/a/43266155/3171303 */
+}
+
+.favorite {
+	padding-left: 0.25em;
+}
+
+.equipped {
+	padding-left: 0.25em;
+	list-style-type: square;
+	list-style-position: inside;
+}
+
+li.equipped > .list-item {
+	padding-left: 0;
+	margin-left: -0.275em;
+}
