@@ -60,6 +60,7 @@ var app = new Vue({
 					},
 				],
 				submenuClasses: "submenu submenu-scoot-left",
+				footerSectionOne: "HP 100/100",
 			},
 			{
 				name: "Inv",
@@ -147,6 +148,7 @@ var app = new Vue({
 					},
 				],
 				submenuClasses: "submenu",
+				footerSectionOne: "5/50"
 			},
 			{
 				name: "Data",
@@ -158,16 +160,29 @@ var app = new Vue({
 						name: "Workshops",
 					},
 					{
-						name: "Combat",
-					},
-					{
-						name: "Crafting",
-					},
-					{
-						name: "Crime",
+						name: "Stats",
+						type: "List",
+						items: [
+							{
+								name: "General",
+							},
+							{
+								name: "Quest",
+							},
+							{
+								name: "Combat",
+							},
+							{
+								name: "Crafting",
+							},
+							{
+								name: "Crime",
+							},
+						]
 					},
 				],
 				submenuClasses: "submenu submenu-scoot-right",
+				footerSectionOne: "10.23.2287"
 			},
 			{
 				name: "Map",

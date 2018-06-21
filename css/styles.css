@@ -14,7 +14,8 @@
 .top-menu-button {
 	padding:0 0.5vw 0.2vh 0.5vw;
 	font-weight: bold;
-	text-shadow: 0 0 3px #5FFFA1;
+	text-shadow: 0 0 3px #5FFF81;
+	margin-bottom: -3px;
 }
 
 .submenu-button {
@@ -28,13 +29,14 @@
 .active-submenu-button {
 	color: #5fFFB1;
 	font-weight: bold;
-	text-shadow: 0 0 3px #5FFFA1;
+	text-shadow: 0 0 3px #5FFF81;
 }
 
 .active-menu-button {
-	border: #5FFFA1 solid 5px;
+	border: #5FFF81 solid 5px;
 	border-bottom: none;
-
+	padding-bottom: 0.25em;
+	background: #001300;
 }
 
 .top-menu > ul, .submenu > ul {
@@ -49,13 +51,17 @@
 
 .top-menu > ul > li {
 	width: 15vw;
+	
 }
 
 .submenu > ul > li, .submenu > ul > li > button {
 	width: 8vw;
 }
 
-
+.active-menu-li {
+	height: 50%;
+	margin-bottom: -1px;
+}
 
 body {
 	background: #001300;
@@ -66,7 +72,7 @@ body {
 }
 
 .top-menu {
-	border-bottom: #5FFFA1 solid 4px;
+	border-bottom: #5FFF81 solid 4px;
 	margin-bottom: -1vh;
 	padding-bottom: -1vh;
 	padding-left: 10vw;
@@ -146,4 +152,26 @@ body {
 li.equipped > .list-item {
 	padding-left: 0;
 	margin-left: -0.275em;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 8vh;
+}
+
+.footer > div {
+	background: #1f593c;
+	display: inline-block;
+	width: 32%;
+}
+
+.footer > div > span {
+	margin-left: 1vw;
+}
+
+.section-one {
+	margin-left: 1.5vw;
 }
