@@ -19,36 +19,44 @@ var app = new Vue({
 								name: "Strength",
 								value: "7",
 								image: "animations/special/Strength.gif",
+								text: "Strength is a measure of your raw physical power. It affects how much you can carry, and the damage of all melee attacks.",
 							},
 							{
 								name: "Perception",
 								value: "7",
 								image: "animations/special/Perception.gif",
+								text: "Perception is your environmental awareness and \"sixth sense,\" and affects weapon accuracy in V.A.T.S.",
+
 							},
 							{
 								name: "Endurance",
 								value: "7",
 								image: "animations/special/Endurance.gif",
+								text: "Endurance is a measure of your overall physical fitness. It affects your total health and the Action Point drain from sprinting.",
 							},
 							{
 								name: "Charisma",
 								value: "7",
 								image: "animations/special/Charisma.gif",
+								text: "Charisma is your ability to charm and convince others. It affects your success to persuade in dialogue and prices when you barter.",
 							},
 							{
 								name: "Intelligence",
 								value: "7",
 								image: "animations/special/Intelligence.gif",
+								text: "Intelligence is a measure of your overall mental acuity, and affects the number of Experience Points earned.",
 							},
 							{
 								name: "Agility",
 								value: "7",
 								image: "animations/special/Agility.gif",
+								text: "Agility is a measure of your overall finesse and reflexes. It affects the number of Action Points in V.A.T.S. and your ability to sneak.",
 							},
 							{
 								name: "Luck",
 								value: "7",
 								image: "animations/special/Luck.gif",
+								text: "Luck is a measure of your general good fortune, and affects the recharge rate of Critical Hits.",
 							},
 						]
 					},
@@ -68,6 +76,7 @@ var app = new Vue({
 				],
 				submenuClasses: "submenu submenu-scoot-left",
 				footerSectionOne: "HP 100/100",
+				footerSectionTwo: "this is the Stat menu",
 			},
 			{
 				name: "Inv",
@@ -155,7 +164,8 @@ var app = new Vue({
 					},
 				],
 				submenuClasses: "submenu",
-				footerSectionOne: "5/50"
+				footerSectionOne: "5/50",
+				footerSectionTwo: "this is the Inv menu",
 			},
 			{
 				name: "Data",
@@ -189,15 +199,18 @@ var app = new Vue({
 					},
 				],
 				submenuClasses: "submenu submenu-scoot-right",
-				footerSectionOne: "10.23.2287"
+				footerSectionOne: "10.23.2287",
+				footerSectionTwo: "this is the Data menu",
 			},
 			{
 				name: "Map",
 				submenus: [],
+				footerSectionTwo: "this is the Map menu",
 			},
 			{
 				name: "Radio",
 				submenus: [],
+				footerSectionTwo: "this is the Radio menu",
 			},
 		],
 	},

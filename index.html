@@ -43,28 +43,39 @@
 						</ul>
 					</div>
 					<div class="right-column list-view align-right">
-						You are viewing {{menus[activeMenu].submenus[activeSubMenu].items[activeListItem].name}}.
+						
 						<div class="animation" v-if="menus[activeMenu].submenus[activeSubMenu].items[activeListItem].image">
 							<div :style="{ backgroundImage: 'url(' + menus[activeMenu].submenus[activeSubMenu].items[activeListItem].image + ')'}"></div>
+						</div>
+						<div class="description" v-if="menus[activeMenu].submenus[activeSubMenu].items[activeListItem].text">
+							<p>{{menus[activeMenu].submenus[activeSubMenu].items[activeListItem].text}}</p>
+						</div>
+						<div class="description" v-else>
+							<p>You are viewing {{menus[activeMenu].submenus[activeSubMenu].items[activeListItem].name}}.</p>
+							
 						</div>
 					</div>
 				</div>
 				<div v-else>
 						<p>You are viewing the {{menus[activeMenu].submenus[activeSubMenu].name}} screen.</p>
+						<p>Change top-level menus with PageUp/PageDown. Change submenus with Left/Right. Select items with Up/Down. Clicking with the mouse works as well ;)</p>
 				</div>
 			</div>
-			<div v-else><p>You are viewing the {{menus[activeMenu].name}} screen.</p></div>
+			<div v-else>
+				<p>You are viewing the {{menus[activeMenu].name}} screen.</p>
+				<p>Change top-level menus with PageUp/PageDown. Change submenus with Left/Right. Select items with Up/Down. Clicking with the mouse works as well ;)</p>
+			</div>
 		</div>
 		<div class="footer">
 			<div class="section-one">
 				<span>
-						{{menus[activeMenu].footerSectionOne}}
+					{{menus[activeMenu].footerSectionOne}}
 				</span>
 					
 			</div>
 			<div class="section-two">
 				<span>
-					sample words
+					{{menus[activeMenu].footerSectionTwo}}
 				</span>
 
 			</div>

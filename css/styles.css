@@ -195,5 +195,10 @@ li.equipped > .list-item {
 }
 
 .animation {
-	height: 100%;
+	margin-top: -5vh;
+}
+
+.description {
+	margin-top: -2vh;
+	padding-top: 0;
 }
