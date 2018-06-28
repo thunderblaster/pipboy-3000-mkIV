@@ -18,30 +18,37 @@ var app = new Vue({
 							{
 								name: "Strength",
 								value: "7",
+								image: "animations/special/Strength.gif",
 							},
 							{
 								name: "Perception",
 								value: "7",
+								image: "animations/special/Perception.gif",
 							},
 							{
 								name: "Endurance",
 								value: "7",
+								image: "animations/special/Endurance.gif",
 							},
 							{
 								name: "Charisma",
 								value: "7",
+								image: "animations/special/Charisma.gif",
 							},
 							{
 								name: "Intelligence",
 								value: "7",
+								image: "animations/special/Intelligence.gif",
 							},
 							{
 								name: "Agility",
 								value: "7",
+								image: "animations/special/Agility.gif",
 							},
 							{
 								name: "Luck",
 								value: "7",
+								image: "animations/special/Luck.gif",
 							},
 						]
 					},

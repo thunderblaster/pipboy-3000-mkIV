@@ -3,6 +3,14 @@
     src: url(monofonto.ttf);
 }
 
+html, body, #vue-app, .body, .body > div, .body > div > div, .right-column {
+	height: 100%;
+}
+
+html {
+	overflow: hidden;
+}
+
 .menu-button {
 	background:none;
 	color:inherit;
@@ -174,4 +182,18 @@ li.equipped > .list-item {
 
 .section-one {
 	margin-left: 1.5vw;
+}
+
+.animation > div {
+	filter: contrast(140%);
+	height: 309px;
+	width: 437px;
+	background-repeat: no-repeat;
+	background-color: #5fFFB1;
+	background-blend-mode: multiply;
+
+}
+
+.animation {
+	height: 100%;
 }

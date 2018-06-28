@@ -44,6 +44,9 @@
 					</div>
 					<div class="right-column list-view align-right">
 						You are viewing {{menus[activeMenu].submenus[activeSubMenu].items[activeListItem].name}}.
+						<div class="animation" v-if="menus[activeMenu].submenus[activeSubMenu].items[activeListItem].image">
+							<div :style="{ backgroundImage: 'url(' + menus[activeMenu].submenus[activeSubMenu].items[activeListItem].image + ')'}"></div>
+						</div>
 					</div>
 				</div>
 				<div v-else>
