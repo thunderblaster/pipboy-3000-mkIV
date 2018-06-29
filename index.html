@@ -11,6 +11,13 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/vue.js"></script>
 	<script defer src="js/app.js"></script>
+	<link rel="prefetch" href="animations/special/Strength.gif" as="image">
+	<link rel="prefetch" href="animations/special/Perception.gif" as="image">
+	<link rel="prefetch" href="animations/special/Endurance.gif" as="image">
+	<link rel="prefetch" href="animations/special/Charisma.gif" as="image">
+	<link rel="prefetch" href="animations/special/Intelligence.gif" as="image">
+	<link rel="prefetch" href="animations/special/Agility.gif" as="image">
+	<link rel="prefetch" href="animations/special/Luck.gif" as="image">
 </head>
 <body>
 	<div id="vue-app">
@@ -43,7 +50,7 @@
 						</ul>
 					</div>
 					<div class="right-column list-view align-right">
-						
+
 						<div class="animation" v-if="menus[activeMenu].submenus[activeSubMenu].items[activeListItem].image">
 							<div :style="{ backgroundImage: 'url(' + menus[activeMenu].submenus[activeSubMenu].items[activeListItem].image + ')'}"></div>
 						</div>
@@ -52,7 +59,7 @@
 						</div>
 						<div class="description" v-else>
 							<p>You are viewing {{menus[activeMenu].submenus[activeSubMenu].items[activeListItem].name}}.</p>
-							
+
 						</div>
 					</div>
 				</div>
@@ -71,7 +78,7 @@
 				<span>
 					{{menus[activeMenu].footerSectionOne}}
 				</span>
-					
+
 			</div>
 			<div class="section-two">
 				<span>
@@ -85,7 +92,7 @@
 				</span>
 
 			</div>
-			
+
 		</div>
 	</div> <!-- /app -->
 </body>
