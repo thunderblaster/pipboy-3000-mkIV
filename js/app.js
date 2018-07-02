@@ -67,9 +67,13 @@ var app = new Vue({
 							{
 								name: "Iron Fist",
 								quantity: 2,
+								image: "animations/perks/Iron-Fist.gif",
+								text: "	Punching attacks now do 40% more damage and can disarm your opponent.",
 							},
 							{
 								name: "Locksmith",
+								image: "animations/perks/Locksmith.gif",
+								text: "Your nimble fingers allow you to pick advanced locks.",
 							},
 						]
 					},
@@ -172,6 +176,14 @@ var app = new Vue({
 				submenus: [
 					{
 						name: "Quests",
+						type: "List",
+						items: [
+							{
+								name: "War Never Changes",
+								image: "animations/quests/War-Never-Changes.gif",
+								text: "Enter the wasteland",
+							}
+						]
 					},
 					{
 						name: "Workshops",
