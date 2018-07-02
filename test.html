@@ -18,10 +18,10 @@
 <body>
 	<button onclick="changeBackground('Strength')">Strength</button>
 	<button onclick="changeBackground('Perception')">Perception</button>
-	<div style="width: 437; height: 309" id="animation"></div>
+	<div style="width: 437px; height: 309px" id="animation"></div>
 	<script>
 		function changeBackground(animationName) {
-			document.getElementById("animation").style.backgroundImage = "animations/special/" + animationName + ".gif";
+			document.getElementById("animation").style.backgroundImage = "url('animations/special/" + animationName + ".gif')";
 		}
 	</script>
 </body>
