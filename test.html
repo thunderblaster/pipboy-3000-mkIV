@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>Div Background-Image Test</title>
+	<meta name="description" content="Div Background-Image Test">
+	<meta name="author" content="thunderblaster">
+
+	<link rel="prefetch" href="animations/special/Strength.gif">
+	<link rel="prefetch" href="animations/special/Perception.gif">
+	<link rel="prefetch" href="animations/special/Endurance.gif">
+	<link rel="prefetch" href="animations/special/Charisma.gif">
+	<link rel="prefetch" href="animations/special/Intelligence.gif">
+	<link rel="prefetch" href="animations/special/Agility.gif">
+	<link rel="prefetch" href="animations/special/Luck.gif">
+</head>
+<body>
+	<button onclick="changeBackground(Strength)">Strength</button>
+	<button onclick="changeBackground(Perception)">Perception</button>
+	<div style="width: 437; height: 309" id="animation"></div>
+	<script>
+		function changeBackground(animationName) {
+			document.getElementById("animation").style.backgroundImage = "animations/special/" + animationName + ".gif";
+		}
+	</script>
+</body>
+</html>
