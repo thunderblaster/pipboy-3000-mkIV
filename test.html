@@ -16,12 +16,20 @@
 	<link rel="prefetch" href="animations/special/Luck.gif">
 </head>
 <body>
+	<h1>Background-Image</h1>
 	<button onclick="changeBackground('Strength')">Strength</button>
 	<button onclick="changeBackground('Perception')">Perception</button>
-	<div style="width: 437px; height: 309px" id="animation"></div>
+	<div style="width: 437px; height: 309px" id="animationDiv"></div>
+	<h1>Img</h1>
+	<button onclick="changeImgSrc('Endurance')">Endurance</button>
+	<button onclick="changeImgSrc('Charisma')">Charisma</button>
+	<img src="" width="437px" height="309px" id="animationImg">
 	<script>
 		function changeBackground(animationName) {
-			document.getElementById("animation").style.backgroundImage = "url('animations/special/" + animationName + ".gif')";
+			document.getElementById("animationDiv").style.backgroundImage = "url('animations/special/" + animationName + ".gif')";
+		}
+		function changeImgSrc(animationName) {
+			document.getElementById("animationDiv").src = "animations/special/" + animationName + ".gif";
 		}
 	</script>
 </body>
