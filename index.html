@@ -52,7 +52,7 @@
 					<div class="right-column list-view align-right">
 
 						<div class="animation" v-if="menus[activeMenu].submenus[activeSubMenu].items[activeListItem].image">
-							<div :style="{ backgroundImage: 'url(' + menus[activeMenu].submenus[activeSubMenu].items[activeListItem].image + ')'}"></div>
+							<div :style="{ backgroundImage: 'url(' + menus[activeMenu].submenus[activeSubMenu].items[activeListItem].image + ')'}" class="list-animation"></div>
 						</div>
 						<div class="description" v-if="menus[activeMenu].submenus[activeSubMenu].items[activeListItem].text">
 							<p>{{menus[activeMenu].submenus[activeSubMenu].items[activeListItem].text}}</p>
@@ -97,7 +97,10 @@
 				<span>
 					{{menus[activeMenu].footerSectionTwo}}
 				</span>
-
+				<div v-if="menus[activeMenu].name==='Stat'" id="experience-bar">
+					<span class="experience-full"></span>
+					<span class="experience-empty"></span>
+				</div>
 			</div>
 			<div class="section-three">
 				<span>

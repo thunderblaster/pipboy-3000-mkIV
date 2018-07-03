@@ -139,7 +139,7 @@ body {
   cursor: pointer;
   padding: 0 0.75em;
   display: inline-block;
-  width: 88%;
+  width: 86%;
   overflow-x: hidden;
   vertical-align: bottom;
   /* https://stackoverflow.com/a/43266155/3171303 */
@@ -171,7 +171,7 @@ li.equipped > .list-item {
 .footer > div {
   background: #1f593c;
   display: inline-block;
-  width: 31%;
+  width: 31vw;
 }
 
 .footer > div > span {
@@ -187,13 +187,14 @@ li.equipped > .list-item {
   padding-right: 1vw;
 }
 
-.animation > div {
+.list-animation, #status-animation {
   filter: contrast(140%);
   height: 309px;
   width: 437px;
   background-repeat: no-repeat;
   background-color: #5fFFA0;
   background-blend-mode: multiply;
+  background-size: cover;
 }
 
 .animation {
@@ -203,6 +204,7 @@ li.equipped > .list-item {
 .description {
   margin-top: -2vh;
   padding-top: 0;
+  z-index: 100;
 }
 
 #status-body-container {
@@ -213,7 +215,7 @@ li.equipped > .list-item {
 #status-animation {
   background-image: url("../animations/misc/Status.gif");
   background-size: cover;
-  margin: 10vh auto;
+  margin: 5vh auto;
 }
 
 .health-bar {
@@ -226,7 +228,7 @@ li.equipped > .list-item {
 .head-health-bar {
   position: absolute;
   left: 45%;
-  top: 15%;
+  top: 12%;
 }
 
 .left-arm-health-bar {
@@ -257,6 +259,57 @@ li.equipped > .list-item {
   position: absolute;
   left: 45%;
   top: 85%;
+}
+
+#experience-bar {
+  display: inline-block;
+  height: 1.75vh;
+  width: 16vw;
+  border: solid 2px #5fFFA0;
+}
+
+.experience-full {
+  display: block;
+  background-color: #5fFFA0;
+  height: 1.75vh;
+  width: 34%;
+}
+
+@media (max-width: 900px) {
+  body {
+    font-size: 120%;
+  }
+}
+@media (max-width: 700px) {
+  body {
+    font-size: 100%;
+  }
+
+  .list-animation, #status-animation {
+    height: 200px;
+    width: 280px;
+  }
+
+  #status-body-container {
+    left: calc(50vw - 140px);
+  }
+
+  .description {
+    font-size: 80%;
+  }
+
+  .animation {
+    margin-top: -10vh;
+  }
+
+  .head-health-bar {
+    top: 0;
+  }
+}
+@media (max-width: 510px) {
+  body {
+    font-size: 80%;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
