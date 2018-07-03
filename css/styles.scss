@@ -218,13 +218,15 @@ li.equipped > .list-item {
 
 #status-body-container {
 	position: absolute;
-	left: calc(50vw - 220px);
+	left: calc(50vw - 240px);
 }
 
 #status-animation {
 	background-image: url("../animations/misc/Status.gif");
 	background-size: cover;
 	margin: 5vh auto;
+	height: 320px;
+	width: 480px;
 }
 
 .health-bar {
@@ -267,7 +269,7 @@ li.equipped > .list-item {
 .body-health-bar {
 	position: absolute;
 	left: 45%;
-	top: 85%;
+	top: 90%;
 }
 
 $xp-bar-height: 1.75vh;
@@ -296,12 +298,17 @@ $xp-bar-height: 1.75vh;
 	body {
 		font-size: 100%;
 	}
-	.list-animation, #status-animation {
+	.list-animation  {
 		height: 200px;
 		width: 280px;
 	}
+	#status-animation {
+		height: 250px;
+		width: 320px;
+	}
+
 	#status-body-container {
-		left: calc(50vw - 140px);
+		left: calc(50vw - 160px);
 	}
 	.description {
 		font-size: 80%;
@@ -318,5 +325,13 @@ $xp-bar-height: 1.75vh;
 @media(max-width: 510px) {
 	body {
 		font-size: 80%;
+	}
+	#status-animation  {
+		height: 200px;
+		width: 280px;
+	}
+
+	#status-body-container {
+		left: calc(50vw - 140px);
 	}
 }
