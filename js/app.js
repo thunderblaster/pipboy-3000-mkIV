@@ -10,6 +10,7 @@ var app = new Vue({
 				submenus: [
 					{
 						name: "Status",
+						type: "Status",
 					},
 					{
 						name: "Special",
@@ -80,7 +81,8 @@ var app = new Vue({
 				],
 				submenuClasses: "submenu submenu-scoot-left",
 				footerSectionOne: "HP 100/100",
-				footerSectionTwo: "this is the Stat menu",
+				footerSectionTwo: "Level 1",
+				footerSectionThree: "AP 50/50"
 			},
 			{
 				name: "Inv",

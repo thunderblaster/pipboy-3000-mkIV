@@ -31,11 +31,11 @@ html {
 }
 
 .submenu-fade {
-	color: #053522
+	color: #053522;
 }
 
 .active-submenu-button {
-	color: #5fFFB1;
+	color: #5fFFA0;
 	font-weight: bold;
 	text-shadow: 0 0 3px #5FFF81;
 }
@@ -74,7 +74,7 @@ html {
 body {
 	background: #001300;
 	/* color: #69FBBB; */
-	color: #5fFFB1;
+	color: #5fFFA0;
 	font-family: monofonto, serif;
 	font-size: 150%;
 }
@@ -133,7 +133,7 @@ body {
 }
 
 .active-list-item {
-	background: #5fFFB1;
+	background: #5fFFA0;
 	color: #001300;
 
 }
@@ -173,7 +173,7 @@ li.equipped > .list-item {
 .footer > div {
 	background: #1f593c;
 	display: inline-block;
-	width: 32%;
+	width: 31%;
 }
 
 .footer > div > span {
@@ -184,12 +184,17 @@ li.equipped > .list-item {
 	margin-left: 1.5vw;
 }
 
+.section-three {
+	text-align: right;
+	padding-right: 1vw;
+}
+
 .animation > div {
 	filter: contrast(140%);
 	height: 309px;
 	width: 437px;
 	background-repeat: no-repeat;
-	background-color: #5fFFB1;
+	background-color: #5fFFA0;
 	background-blend-mode: multiply;
 
 }
@@ -201,4 +206,53 @@ li.equipped > .list-item {
 .description {
 	margin-top: -2vh;
 	padding-top: 0;
+}
+
+#status-animation {
+	background-image: url("../animations/misc/Status.gif");
+	background-size: cover;
+	margin: 10vh auto;
+}
+
+.health-bar {
+	height: 1vh;
+	width: 3vw;
+	background-color: #5fFFA0;
+	z-index: 100;
+}
+
+.head-health-bar {
+	position: absolute;
+	left: 48.5vw;
+	top: 25vh;
+}
+
+.left-arm-health-bar {
+	position: absolute;
+	left: 40vw;
+	top: 40vh;
+}
+
+.right-arm-health-bar {
+	position: absolute;
+	right: 40vw;
+	top: 40vh;
+}
+
+.left-leg-health-bar {
+	position: absolute;
+	left: 40vw;
+	top: 55vh;
+}
+
+.right-leg-health-bar {
+	position: absolute;
+	right: 40vw;
+	top: 55vh;
+}
+
+.body-health-bar {
+	position: absolute;
+	left: 48.5vw;
+	top: 65vh;
 }

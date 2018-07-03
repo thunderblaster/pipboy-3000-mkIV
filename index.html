@@ -63,6 +63,17 @@
 						</div>
 					</div>
 				</div>
+				<div v-else-if="menus[activeMenu].submenus[activeSubMenu].type==='Status'">
+					<div class="health-bar head-health-bar"></div>
+					<div class="health-bar left-arm-health-bar"></div>
+					<div class="health-bar left-leg-health-bar"></div>
+					<div class="animation">
+						<div id="status-animation"></div>
+					</div>
+					<div class="health-bar right-arm-health-bar"></div>
+					<div class="health-bar right-leg-health-bar"></div>
+					<div class="health-bar body-health-bar"></div>
+				</div>
 				<div v-else>
 						<p>You are viewing the {{menus[activeMenu].submenus[activeSubMenu].name}} screen.</p>
 						<p>Change top-level menus with PageUp/PageDown. Change submenus with Left/Right. Select items with Up/Down. Clicking with the mouse works as well ;)</p>
@@ -88,7 +99,7 @@
 			</div>
 			<div class="section-three">
 				<span>
-					more words
+					{{menus[activeMenu].footerSectionThree}}
 				</span>
 
 			</div>
