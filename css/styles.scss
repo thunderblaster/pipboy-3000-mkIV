@@ -1,0 +1,268 @@
+$primary-text-color: #5fFFA0;
+$secondary-text-color: #1f593c;
+$tertiary-text-color: #053522;
+$background-color: #001300;
+$footer-background-color: #1f593c;
+$text-shadow-color: #5FFF81;
+
+@font-face {
+    font-family: monofonto;
+    src: url('../fonts/monofonto.ttf');
+}
+
+html, body, #vue-app, .body, .body > div, .body > div > div, .right-column {
+	height: 100%;
+}
+
+html {
+	overflow: hidden;
+}
+
+body {
+	background: $background-color;
+	color: $primary-text-color;
+	font-family: monofonto, serif;
+	font-size: 150%;
+}
+
+.menu-button {
+	background:none;
+	color:inherit;
+	border:none;
+	font: inherit;
+	cursor: pointer;
+}
+
+.top-menu-button {
+	padding:0 0.5vw 0.2vh 0.5vw;
+	font-weight: bold;
+	text-shadow: 0 0 3px $text-shadow-color;
+	margin-bottom: -3px;
+}
+
+.submenu-button {
+	color: $secondary-text-color;
+}
+
+.submenu-fade {
+	color: $tertiary-text-color;
+}
+
+.active-submenu-button {
+	color: $primary-text-color;
+	font-weight: bold;
+	text-shadow: 0 0 3px $text-shadow-color;
+}
+
+.active-menu-button {
+	border: $text-shadow-color solid 5px;
+	border-bottom: none;
+	padding-bottom: 0.25em;
+	background: $background-color;
+}
+
+.top-menu > ul, .submenu > ul {
+	list-style-type: none;
+}
+
+.top-menu > ul > li, .submenu > ul > li {
+	display: inline-block;
+	text-transform: uppercase;
+	padding-left: 0;
+}
+
+.top-menu > ul > li {
+	width: 15vw;
+}
+
+.submenu > ul > li, .submenu > ul > li > button {
+	width: 8vw;
+}
+
+.active-menu-li {
+	height: 50%;
+	margin-bottom: -1px;
+}
+
+.top-menu {
+	border-bottom: $text-shadow-color solid 4px;
+	margin-bottom: -1vh;
+	padding-bottom: -1vh;
+	padding-left: 10vw;
+	font-size: 130%;
+}
+
+.submenu {
+	padding-left: 6vw;
+}
+
+.top-menu > ul {
+	margin-bottom: 0;
+}
+
+.body {
+	padding: 0.5em 3em;
+}
+
+.submenu-scoot-left {
+	margin-left: -15vw;
+}
+
+.submenu-scoot-right {
+	margin-left: 15.5vw;
+}
+
+.align-left {
+	float: left;
+}
+
+.align-right {
+	float: right;
+}
+
+.left-column.list-view, .right-column.list-view {
+	width: 45%;
+}
+
+.list-view > ul {
+	list-style-type: none;
+}
+.list-view > ul > li {
+	clear: both;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.active-list-item {
+	background: $primary-text-color;
+	color: $background-color;
+
+}
+
+.list-item {
+	cursor: pointer;
+	padding: 0 0.75em;
+	display: inline-block;
+	width: 88%;
+	overflow-x: hidden;
+	vertical-align: bottom; /* https://stackoverflow.com/a/43266155/3171303 */
+}
+
+.favorite {
+	padding-left: 0.25em;
+}
+
+.equipped {
+	padding-left: 0.25em;
+	list-style-type: square;
+	list-style-position: inside;
+}
+
+li.equipped > .list-item {
+	padding-left: 0;
+	margin-left: -0.275em;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 8vh;
+}
+
+.footer > div {
+	background: $footer-background-color;
+	display: inline-block;
+	width: 31%;
+}
+
+.footer > div > span {
+	margin-left: 1vw;
+}
+
+.section-one {
+	margin-left: 1.5vw;
+}
+
+.section-three {
+	text-align: right;
+	padding-right: 1vw;
+}
+
+.animation > div {
+	filter: contrast(140%);
+	height: 309px;
+	width: 437px;
+	background-repeat: no-repeat;
+	background-color: $primary-text-color;
+	background-blend-mode: multiply;
+
+}
+
+.animation {
+	margin-top: -5vh;
+}
+
+.description {
+	margin-top: -2vh;
+	padding-top: 0;
+}
+
+#status-body-container {
+	position: absolute;
+	left: calc(50vw - 220px);
+}
+
+#status-animation {
+	background-image: url("../animations/misc/Status.gif");
+	background-size: cover;
+	margin: 10vh auto;
+}
+
+.health-bar {
+	height: 1vh;
+	width: 3vw;
+	background-color: $primary-text-color;
+	z-index: 100;
+}
+
+.head-health-bar {
+	position: absolute;
+	left: 45%;
+	top: 15%;
+}
+
+.left-arm-health-bar {
+	position: absolute;
+	left: 20%;
+	top: 40%;
+}
+
+.right-arm-health-bar {
+	position: absolute;
+	right: 20%;
+	top: 40%;
+}
+
+.left-leg-health-bar {
+	position: absolute;
+	left: 20%;
+	top: 70%;
+}
+
+.right-leg-health-bar {
+	position: absolute;
+	right: 20%;
+	top: 70%;
+}
+
+.body-health-bar {
+	position: absolute;
+	left: 45%;
+	top: 85%;
+}
