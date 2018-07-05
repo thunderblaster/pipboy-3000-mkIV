@@ -1,17 +1,6 @@
 Vue.component("mapel", {
 	props: ["mapNodes", "waypoints"],
-	template: `<div>
-		<p>things near you</p>
-		<div v-if="mapNodes.length>0">
-		<ul class="map-list left-column align-left">
-			<li v-for="node in mapNodes">{{node.name}}: {{node.lat}}, {{node.lon}}</li>
-		</ul>
-		<ul class="map-list right-column align-right">
-			<li v-for="waypoint in waypoints">{{waypoint.name}}</li>
-		</ul>
-		</div>
-		<p v-else>uh-oh! looks like we couldn't get your location successfully</p>
-	</div>`,
+	template: `<canvas id="map-canvas"></canvas>`,
 	created: function() {
 		if ("geolocation" in navigator) {
 			/* geolocation is available */
@@ -19,9 +8,13 @@ Vue.component("mapel", {
 			navigator.geolocation.getCurrentPosition(function(position) {
 				console.log(position.coords.latitude, position.coords.longitude);
 				let southBound = (position.coords.latitude - 0.001).toFixed(4);
+				app.minLon = southBound;
 				let westBound = (position.coords.longitude - 0.0015).toFixed(4);
+				app.minLat = westBound;
 				let northBound = (position.coords.latitude + 0.001).toFixed(4);
+				app.maxLon = northBound;
 				let eastBound = (position.coords.longitude + 0.0015).toFixed(4);
+				app.maxLat = eastBound;
 				$.get("http://www.openstreetmap.org/api/0.6/map?bbox=" + westBound + "," + southBound + "," + eastBound + "," + northBound, function(data) {
 					//nodes
 					let nodes = $(data).find("node").filter(function() {
@@ -309,6 +302,10 @@ var app = new Vue({
 		],
 		mapNodes: [],
 		waypoints: [],
+		minLon: 0,
+		minLat: 0,
+		maxLon: 0,
+		maxLat: 0,
 	},
 	methods: {
 		switchMenu: function (index) {
@@ -341,6 +338,25 @@ var app = new Vue({
 				this.activeListItem++;
 			}
 		},
+		drawMap: function() {
+			var c = document.getElementById("map-canvas");
+			var ctx = c.getContext("2d");
+			for(let i=0; i<this.waypoints.length; i++) {
+				for(let j=0; this.waypoints[i].points.length; j++) {
+					if(this.waypoints[i].points[j+1]) {
+						let startx = convertCoordsToPx(this.waypoints[i].points[j].lat, 'x');
+						let starty = convertCoordsToPx(this.waypoints[i].points[j].lon, 'y');
+						let endx = convertCoordsToPx(this.waypoints[i].points[j+1].lat, 'x');
+						let endy = convertCoordsToPx(this.waypoints[i].points[j+1].lon, 'y');
+						console.log(startx, starty, endx, endy);
+						ctx.strokeStyle="#FFFFFF";
+						ctx.moveTo(startx, starty);
+						ctx.lineTo(endx, endy);
+						ctx.stroke();
+					}
+				}
+			}
+		}
 	},
 	computed: {
 		visibleSubMenus: function () {
@@ -366,3 +382,20 @@ var app = new Vue({
 	}
 });
 
+function convertCoordsToPx(coordValue, coordAxis) {
+	let canvasWidth = document.getElementById("map-canvas").scrollWidth;
+	let canvasHeight = document.getElementById("map-canvas").scrollHeight;
+
+	if(coordAxis==='x') {
+		let range = app.maxLat - app.minLat;
+		let relativePosition = (coordValue - app.minLat) / range;
+		return relativePosition * canvasWidth;
+	} else if(coordAxis==='y') {
+		let range = app.maxLon - app.minLon;
+		let relativePosition = (coordValue - app.minLon) / range;
+		return relativePosition * canvasHeight;
+	} else {
+		//should never get here
+		throw "bad coordAxis";
+	}
+}
