@@ -81,6 +81,10 @@
 						<p>Change top-level menus with PageUp/PageDown. Change submenus with Left/Right. Select items with Up/Down. Clicking with the mouse works as well ;)</p>
 				</div>
 			</div>
+			<div v-else-if="menus[activeMenu].name==='Map'">
+				<mapel :map-nodes="mapNodes" :waypoints="waypoints"
+				></mapel>
+			</div>
 			<div v-else>
 				<p>You are viewing the {{menus[activeMenu].name}} screen.</p>
 				<p>Change top-level menus with PageUp/PageDown. Change submenus with Left/Right. Select items with Up/Down. Clicking with the mouse works as well ;)</p>

@@ -1,3 +1,76 @@
+Vue.component("mapel", {
+	props: ["mapNodes", "waypoints"],
+	template: `<div>
+		<p>things near you</p>
+		<div v-if="mapNodes.length>0">
+		<ul class="map-list left-column align-left">
+			<li v-for="node in mapNodes">{{node.name}}: {{node.lat}}, {{node.lon}}</li>
+		</ul>
+		<ul class="map-list right-column align-right">
+			<li v-for="waypoint in waypoints">{{waypoint.name}}</li>
+		</ul>
+		<p v-else>uh-oh! looks like we couldn't get your location successfully</p>
+	</div>`,
+	created: function() {
+		if ("geolocation" in navigator) {
+			/* geolocation is available */
+			console.log("geolocation available!");
+			navigator.geolocation.getCurrentPosition(function(position) {
+				console.log(position.coords.latitude, position.coords.longitude);
+				let southBound = (position.coords.latitude - 0.001).toFixed(4);
+				let westBound = (position.coords.longitude - 0.0015).toFixed(4);
+				let northBound = (position.coords.latitude + 0.001).toFixed(4);
+				let eastBound = (position.coords.longitude + 0.0015).toFixed(4);
+				$.get("http://www.openstreetmap.org/api/0.6/map?bbox=" + westBound + "," + southBound + "," + eastBound + "," + northBound, function(data) {
+					//nodes
+					let nodes = $(data).find("node").filter(function() {
+						return $(this).find("tag[k='name']").length;
+					});
+					var cleanedNodes = [];
+					$(nodes).each(function() {
+						let cleanedNode = {};
+						cleanedNode.name = $(this).find("tag[k='name']").attr('v');
+						cleanedNode.lat = $(this).attr('lat');
+						cleanedNode.lon = $(this).attr('lon');
+						cleanedNodes.push(cleanedNode);
+					});
+					app.mapNodes = cleanedNodes;
+					//waypoints
+					let waypoints = $(data).find("way").filter(function() {
+						return $(this).find("tag[k='name']").length;
+					});
+					var cleanedWaypoints = [];
+					$(waypoints).each(function() {
+						let cleanedWaypoint = {};
+						cleanedWaypoint.name = $(this).find("tag[k='name']").attr('v');
+						cleanedWaypoint.points = [];
+						$(this).children("nd").each(function() {
+							thisPoint = {};
+							thisPoint.lat = $(this).attr('lat');
+							thisPoint.lon = $(this).attr('lon');
+							cleanedWaypoint.points.push(thisPoint);
+						});
+						cleanedWaypoints.push(cleanedWaypoint);
+					});
+					console.log(cleanedWaypoints);
+					app.waypoints = cleanedWaypoints;
+				});
+			  },
+			function(error) {
+				/* error using geolocation */
+				if (error.code == error.PERMISSION_DENIED) {
+					console.log("geolocation permission denied :(");
+				} else {
+					console.log(error);
+				}
+			});
+		  } else {
+			/* geolocation IS NOT available */
+			console.log("geolocation failure :(");
+		  }
+	},
+})
+
 var app = new Vue({
 	el: "#vue-app",
 	data: {
@@ -227,6 +300,8 @@ var app = new Vue({
 				footerSectionTwo: "this is the Radio menu",
 			},
 		],
+		mapNodes: [],
+		waypoints: [],
 	},
 	methods: {
 		switchMenu: function (index) {

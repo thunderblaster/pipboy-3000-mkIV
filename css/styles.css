@@ -277,6 +277,10 @@ li.equipped > .list-item {
   width: 34%;
 }
 
+.map-list {
+  font-size: 80%;
+}
+
 @media (max-width: 900px) {
   body {
     font-size: 120%;
