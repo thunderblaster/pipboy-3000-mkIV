@@ -386,14 +386,14 @@ function convertCoordsToPx(coordValue, coordAxis) {
 	let canvasWidth = document.getElementById("map-canvas").scrollWidth;
 	let canvasHeight = document.getElementById("map-canvas").scrollHeight;
 
-	if(coordAxis==='x') {
+	if(coordAxis==='y') {
 		let range = app.maxLat - app.minLat;
 		let relativePosition = (coordValue - app.minLat) / range;
-		return relativePosition * canvasWidth;
-	} else if(coordAxis==='y') {
+		return Math.abs(relativePosition * canvasHeight);
+	} else if(coordAxis==='x') {
 		let range = app.maxLon - app.minLon;
 		let relativePosition = (coordValue - app.minLon) / range;
-		return relativePosition * canvasHeight;
+		return Math.abs(relativePosition * canvasWidth);
 	} else {
 		//should never get here
 		throw "bad coordAxis";
