@@ -9,6 +9,7 @@ Vue.component("mapel", {
 		<ul class="map-list right-column align-right">
 			<li v-for="waypoint in waypoints">{{waypoint.name}}</li>
 		</ul>
+		</div>
 		<p v-else>uh-oh! looks like we couldn't get your location successfully</p>
 	</div>`,
 	created: function() {
