@@ -33,6 +33,7 @@ Vue.component("mapel", {
 						cleanedNode.name = $(this).find("tag[k='name']").attr('v');
 						cleanedNode.lat = $(this).attr('lat');
 						cleanedNode.lon = $(this).attr('lon');
+						cleanedNode.ref = $(this).attr('id');
 						cleanedNodes.push(cleanedNode);
 					});
 					app.mapNodes = cleanedNodes;
@@ -43,17 +44,22 @@ Vue.component("mapel", {
 					var cleanedWaypoints = [];
 					$(waypoints).each(function() {
 						let cleanedWaypoint = {};
+						//console.log(this);
 						cleanedWaypoint.name = $(this).find("tag[k='name']").attr('v');
 						cleanedWaypoint.points = [];
 						$(this).children("nd").each(function() {
 							thisPoint = {};
-							thisPoint.lat = $(this).attr('lat');
-							thisPoint.lon = $(this).attr('lon');
+							thisPoint.ref = $(this).attr('ref');
+							let matchingPoints = $(data).find("node").filter(function() {
+								return $(this).attr("id")==thisPoint.ref;
+							});
+							thisPoint.lat = $(matchingPoints[0]).attr('lat');
+							thisPoint.lon = $(matchingPoints[0]).attr('lon');
 							cleanedWaypoint.points.push(thisPoint);
 						});
 						cleanedWaypoints.push(cleanedWaypoint);
 					});
-					console.log(cleanedWaypoints);
+					//console.log(cleanedWaypoints);
 					app.waypoints = cleanedWaypoints;
 				});
 			  },
