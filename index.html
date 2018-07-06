@@ -58,6 +58,9 @@
 						<div class="description" v-if="menus[activeMenu].submenus[activeSubMenu].items[activeListItem].text">
 							<p>{{menus[activeMenu].submenus[activeSubMenu].items[activeListItem].text}}</p>
 						</div>
+						<div class="item-stats" v-else-if="activeMenu===1">
+							<invstats :item="menus[activeMenu].submenus[activeSubMenu].items[activeListItem]"></invstats>
+						</div>
 						<div class="description" v-else>
 							<p>You are viewing {{menus[activeMenu].submenus[activeSubMenu].items[activeListItem].name}}.</p>
 
@@ -93,7 +96,7 @@
 		</div>
 		<div class="footer">
 			<div class="section-one">
-				<span v-if="activeMenu===3">
+				<span v-if="activeMenu===3||activeMenu===2">
 					{{fakeDate}}
 				</span>
 				<span v-else>
@@ -102,10 +105,11 @@
 
 			</div>
 			<div class="section-two">
-				<span v-if="activeMenu===3">
+				<span v-if="activeMenu===3||activeMenu===2">
 					{{currentTime}}
 				</span>
 				<span v-else>
+					<img v-if="activeMenu===1" src="images/caps.png" width="20px" height="20px">
 					{{menus[activeMenu].footerSectionTwo}}
 				</span>
 

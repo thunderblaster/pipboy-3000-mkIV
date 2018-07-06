@@ -1,3 +1,9 @@
+Vue.component("invstats", {
+	props: ["item"],
+	template: `<table><tr v-for="property in item.properties"><td class="table-key">{{property.name}}</td>
+	<td class="table-value">{{property.value}}</td></tr></table>`,
+});
+
 Vue.component("mapel", {
 	props: ["mapNodes", "waypoints"],
 	template: `<canvas id="map-canvas" width="600px" height="400px"></canvas>`,
@@ -171,10 +177,38 @@ var app = new Vue({
 								name: "Sawed-off Double Barrel Shotgun",
 								equipped: true,
 								favorite: true,
+								properties: [
+									{
+										name: "Damage",
+										value: 50,
+									},
+									{
+										name: "Value",
+										value: 100
+									},
+									{
+										name: "Weight",
+										value: 4
+									},
+								],
 							},
 							{
 								name: "10mm Pistol",
 								quantity: 2,
+								properties: [
+									{
+										name: "Damage",
+										value: 18,
+									},
+									{
+										name: "Value",
+										value: 50
+									},
+									{
+										name: "Weight",
+										value: 1
+									},
+								],
 							},
 						]
 					},
@@ -185,10 +219,30 @@ var app = new Vue({
 							{
 								name: "T-Shirt",
 								equipped: true,
+								properties: [
+									{
+										name: "Value",
+										value: 5
+									},
+									{
+										name: "Weight",
+										value: 0.1
+									},
+								],
 							},
 							{
 								name: "Jeans",
 								equipped: true,
+								properties: [
+									{
+										name: "Value",
+										value: 5
+									},
+									{
+										name: "Weight",
+										value: 0.1
+									},
+								],
 							},
 						]
 					},
@@ -198,6 +252,20 @@ var app = new Vue({
 						items: [
 							{
 								name: "Band-Aids",
+								properties: [
+									{
+										name: "Health",
+										value: 10
+									},
+									{
+										name: "Value",
+										value: 5
+									},
+									{
+										name: "Weight",
+										value: 0.1
+									},
+								],
 							},
 						]
 					},
@@ -207,6 +275,16 @@ var app = new Vue({
 						items: [
 							{
 								name: "Swiss Army Knife",
+								properties: [
+									{
+										name: "Value",
+										value: 1000
+									},
+									{
+										name: "Weight",
+										value: 0.5
+									},
+								],
 							},
 						]
 					},
@@ -217,6 +295,16 @@ var app = new Vue({
 							{
 								name: "iPhone",
 								equipped: true,
+								properties: [
+									{
+										name: "Value",
+										value: 1
+									},
+									{
+										name: "Weight",
+										value: 1
+									},
+								],
 							},
 						]
 					},
@@ -226,6 +314,16 @@ var app = new Vue({
 						items: [
 							{
 								name: "Silencer",
+								properties: [
+									{
+										name: "Value",
+										value: 200
+									},
+									{
+										name: "Weight",
+										value: 1
+									},
+								],
 							},
 						]
 					},
@@ -237,17 +335,37 @@ var app = new Vue({
 								name: "12ga Shell",
 								equipped: true,
 								quantity: 2,
+								properties: [
+									{
+										name: "Value",
+										value: 1
+									},
+									{
+										name: "Weight",
+										value: 0
+									},
+								],
 							},
 							{
 								name: "10mm Round",
 								quantity: 15,
+								properties: [
+									{
+										name: "Value",
+										value: 1
+									},
+									{
+										name: "Weight",
+										value: 0
+									},
+								],
 							}
 						]
 					},
 				],
 				submenuClasses: "submenu",
-				footerSectionOne: "5/50",
-				footerSectionTwo: "this is the Inv menu",
+				footerSectionOne: "Weight: 5/50", //this should be a computed value that updates based on items in inventory
+				footerSectionTwo: "126",
 			},
 			{
 				name: "Data",
@@ -289,13 +407,10 @@ var app = new Vue({
 					},
 				],
 				submenuClasses: "submenu submenu-scoot-right",
-				footerSectionTwo: "this is the Data menu",
 			},
 			{
 				name: "Map",
 				submenus: [],
-				footerSectionOne: this.fakeDate,
-				footerSectionTwo: this.currentTime,
 				footerSectionThree: "Commonwealth",
 			},
 			{
