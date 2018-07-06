@@ -340,6 +340,21 @@ var app = new Vue({
 			if(e.which===40&&this.activeListItem<this.menus[this.activeMenu].submenus[this.activeSubMenu].items.length-1) {
 				this.activeListItem++;
 			}
+			if(e.which===49&&this.activeMenu!==0) {
+				this.switchMenu(0);
+			}
+			if(e.which===50&&this.activeMenu!==1) {
+				this.switchMenu(1);
+			}
+			if(e.which===51&&this.activeMenu!==2) {
+				this.switchMenu(2);
+			}
+			if(e.which===52&&this.activeMenu!==3) {
+				this.switchMenu(3);
+			}
+			if(e.which===53&&this.activeMenu!==4) {
+				this.switchMenu(4);
+			}
 		},
 	},
 	computed: {

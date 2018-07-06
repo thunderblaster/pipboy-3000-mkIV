@@ -12,6 +12,6 @@ GOALS
 
 USE
 -----
-* Page Up and Page Down cycle top-level menus
+* Page Up and Page Down cycle top-level menus (1-5 select directly to the respective menu)
 * Left arrow and Right arrow cycle submenus
 * Up and Down arrows change highlighted item
