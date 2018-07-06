@@ -395,7 +395,6 @@ function convertCoordsToPx(coordValue, coordAxis) {
 	} else if(coordAxis==='x') {
 		let range = app.maxLon - app.minLon;
 		let relativePosition = (coordValue - app.minLon) / range;
-		console.log(coordValue-app.minLon);
 		return Math.abs(Math.round(relativePosition * canvasWidth));
 	} else {
 		//should never get here
