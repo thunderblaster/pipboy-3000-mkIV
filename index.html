@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="css/styles.css?v=1.0">
 	<script src="js/jquery.min.js"></script>
 	<script src="js/vue.js"></script>
+	<script src="js/mapdefaults.js"></script>
 	<script defer src="js/app.js"></script>
 	<link rel="prefetch" href="animations/special/Strength.gif">
 	<link rel="prefetch" href="animations/special/Perception.gif">
@@ -92,15 +93,22 @@
 		</div>
 		<div class="footer">
 			<div class="section-one">
-				<span>
+				<span v-if="activeMenu===3">
+					{{fakeDate}}
+				</span>
+				<span v-else>
 					{{menus[activeMenu].footerSectionOne}}
 				</span>
 
 			</div>
 			<div class="section-two">
-				<span>
+				<span v-if="activeMenu===3">
+					{{currentTime}}
+				</span>
+				<span v-else>
 					{{menus[activeMenu].footerSectionTwo}}
 				</span>
+
 				<div v-if="menus[activeMenu].name==='Stat'" id="experience-bar">
 					<span class="experience-full"></span>
 					<span class="experience-empty"></span>

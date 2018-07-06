@@ -12,7 +12,7 @@ html {
 
 body {
   background: #001300;
-  color: #5fFFA0;
+  color: #5fFF80;
   font-family: monofonto, serif;
   font-size: 150%;
 }
@@ -41,7 +41,7 @@ body {
 }
 
 .active-submenu-button {
-  color: #5fFFA0;
+  color: #5fFF80;
   font-weight: bold;
   text-shadow: 0 0 3px #5FFF81;
 }
@@ -131,7 +131,7 @@ body {
 }
 
 .active-list-item {
-  background: #5fFFA0;
+  background: #5fFF80;
   color: #001300;
 }
 
@@ -192,7 +192,7 @@ li.equipped > .list-item {
   height: 309px;
   width: 437px;
   background-repeat: no-repeat;
-  background-color: #5fFFA0;
+  background-color: #5fFF80;
   background-blend-mode: multiply;
   background-size: cover;
 }
@@ -223,7 +223,7 @@ li.equipped > .list-item {
 .health-bar {
   height: 1vh;
   width: 3vw;
-  background-color: #5fFFA0;
+  background-color: #5fFF80;
   z-index: 100;
 }
 
@@ -267,18 +267,19 @@ li.equipped > .list-item {
   display: inline-block;
   height: 1.75vh;
   width: 16vw;
-  border: solid 2px #5fFFA0;
+  border: solid 2px #5fFF80;
 }
 
 .experience-full {
   display: block;
-  background-color: #5fFFA0;
+  background-color: #5fFF80;
   height: 1.75vh;
   width: 34%;
 }
 
-.map-list {
-  font-size: 80%;
+#map-canvas {
+  width: 100%;
+  height: 80%;
 }
 
 @media (max-width: 900px) {
