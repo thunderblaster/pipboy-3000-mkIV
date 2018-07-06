@@ -1,4 +1,4 @@
-$primary-text-color: #5fFFA0;
+$primary-text-color: #5fFF80;
 $secondary-text-color: #1f593c;
 $tertiary-text-color: #053522;
 $background-color: #001300;
@@ -286,6 +286,11 @@ $xp-bar-height: 1.75vh;
 	background-color: $primary-text-color;
 	height: $xp-bar-height;
 	width: 34%;
+}
+
+#map-canvas {
+	width: 100%;
+	height: 80%;
 }
 
 @media (max-width: 900px) {

@@ -1,6 +1,6 @@
 Vue.component("mapel", {
 	props: ["mapNodes", "waypoints"],
-	template: `<canvas id="map-canvas"></canvas>`,
+	template: `<canvas id="map-canvas" width="600px" height="400px"></canvas>`,
 	created: function() {
 		if ("geolocation" in navigator) {
 			/* geolocation is available */
@@ -8,13 +8,13 @@ Vue.component("mapel", {
 			navigator.geolocation.getCurrentPosition(function(position) {
 				console.log(position.coords.latitude, position.coords.longitude);
 				let southBound = (position.coords.latitude - 0.001).toFixed(4);
-				app.minLon = southBound;
+				app.minLat = southBound;
 				let westBound = (position.coords.longitude - 0.0015).toFixed(4);
-				app.minLat = westBound;
+				app.minLon = westBound;
 				let northBound = (position.coords.latitude + 0.001).toFixed(4);
-				app.maxLon = northBound;
+				app.maxLat = northBound;
 				let eastBound = (position.coords.longitude + 0.0015).toFixed(4);
-				app.maxLat = eastBound;
+				app.maxLon = eastBound;
 				$.get("http://www.openstreetmap.org/api/0.6/map?bbox=" + westBound + "," + southBound + "," + eastBound + "," + northBound, function(data) {
 					//nodes
 					let nodes = $(data).find("node").filter(function() {
@@ -54,6 +54,7 @@ Vue.component("mapel", {
 					});
 					//console.log(cleanedWaypoints);
 					app.waypoints = cleanedWaypoints;
+					app.drawMap();
 				});
 			  },
 			function(error) {
@@ -342,14 +343,15 @@ var app = new Vue({
 			var c = document.getElementById("map-canvas");
 			var ctx = c.getContext("2d");
 			for(let i=0; i<this.waypoints.length; i++) {
-				for(let j=0; this.waypoints[i].points.length; j++) {
+				for(let j=0; j< this.waypoints[i].points.length; j++) {
 					if(this.waypoints[i].points[j+1]) {
-						let startx = convertCoordsToPx(this.waypoints[i].points[j].lat, 'x');
-						let starty = convertCoordsToPx(this.waypoints[i].points[j].lon, 'y');
-						let endx = convertCoordsToPx(this.waypoints[i].points[j+1].lat, 'x');
-						let endy = convertCoordsToPx(this.waypoints[i].points[j+1].lon, 'y');
+						let startx = convertCoordsToPx(this.waypoints[i].points[j].lon, 'x');
+						let starty = convertCoordsToPx(this.waypoints[i].points[j].lat, 'y');
+						let endx = convertCoordsToPx(this.waypoints[i].points[j+1].lon, 'x');
+						let endy = convertCoordsToPx(this.waypoints[i].points[j+1].lat, 'y');
 						console.log(startx, starty, endx, endy);
-						ctx.strokeStyle="#FFFFFF";
+						console.log(this.waypoints[i].points[j].lat, this.waypoints[i].points[j].lon, this.waypoints[i].points[j+1].lat,this.waypoints[i].points[j+1].lon);
+						ctx.strokeStyle="#5fFF80"; // should match $primary-text-color in styles.scss
 						ctx.moveTo(startx, starty);
 						ctx.lineTo(endx, endy);
 						ctx.stroke();
@@ -383,17 +385,18 @@ var app = new Vue({
 });
 
 function convertCoordsToPx(coordValue, coordAxis) {
-	let canvasWidth = document.getElementById("map-canvas").scrollWidth;
-	let canvasHeight = document.getElementById("map-canvas").scrollHeight;
+	let canvasWidth = document.getElementById("map-canvas").width;
+	let canvasHeight = document.getElementById("map-canvas").height;
 
 	if(coordAxis==='y') {
 		let range = app.maxLat - app.minLat;
 		let relativePosition = (coordValue - app.minLat) / range;
-		return Math.abs(relativePosition * canvasHeight);
+		return Math.abs(Math.round(relativePosition * canvasHeight));
 	} else if(coordAxis==='x') {
 		let range = app.maxLon - app.minLon;
 		let relativePosition = (coordValue - app.minLon) / range;
-		return Math.abs(relativePosition * canvasWidth);
+		console.log(coordValue-app.minLon);
+		return Math.abs(Math.round(relativePosition * canvasWidth));
 	} else {
 		//should never get here
 		throw "bad coordAxis";
