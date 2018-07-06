@@ -92,15 +92,22 @@
 		</div>
 		<div class="footer">
 			<div class="section-one">
-				<span>
+				<span v-if="activeMenu===3">
+					{{fakeDate}}
+				</span>
+				<span v-else>
 					{{menus[activeMenu].footerSectionOne}}
 				</span>
 
 			</div>
 			<div class="section-two">
-				<span>
+				<span v-if="activeMenu===3">
+					{{currentTime}}
+				</span>
+				<span v-else>
 					{{menus[activeMenu].footerSectionTwo}}
 				</span>
+
 				<div v-if="menus[activeMenu].name==='Stat'" id="experience-bar">
 					<span class="experience-full"></span>
 					<span class="experience-empty"></span>

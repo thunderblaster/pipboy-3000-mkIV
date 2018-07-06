@@ -7,23 +7,24 @@ Vue.component("mapel", {
 			console.log("geolocation available!");
 			navigator.geolocation.getCurrentPosition(function(position) {
 				console.log(position.coords.latitude, position.coords.longitude);
-				let southBound = (position.coords.latitude - 0.001).toFixed(4);
+				let southBound = (position.coords.latitude - 0.0015).toFixed(4);
 				app.minLat = southBound;
-				let westBound = (position.coords.longitude - 0.0015).toFixed(4);
-				app.minLon = westBound;
-				let northBound = (position.coords.latitude + 0.001).toFixed(4);
+				let westBound = (position.coords.longitude - 0.0025).toFixed(4);
+				app.maxLon = westBound;
+				let northBound = (position.coords.latitude + 0.0015).toFixed(4);
 				app.maxLat = northBound;
-				let eastBound = (position.coords.longitude + 0.0015).toFixed(4);
-				app.maxLon = eastBound;
+				let eastBound = (position.coords.longitude + 0.0025).toFixed(4);
+				app.minLon = eastBound;
 				$.get("http://www.openstreetmap.org/api/0.6/map?bbox=" + westBound + "," + southBound + "," + eastBound + "," + northBound, function(data) {
 					//nodes
 					let nodes = $(data).find("node").filter(function() {
-						return $(this).find("tag[k='name']").length;
+						return $(this).find("tag[k='name']").length && $(this).find("tag[k='amenity']").length;
 					});
 					var cleanedNodes = [];
 					$(nodes).each(function() {
 						let cleanedNode = {};
 						cleanedNode.name = $(this).find("tag[k='name']").attr('v');
+						cleanedNode.type = $(this).find("tag[k='amenity']").attr('v');
 						cleanedNode.lat = $(this).attr('lat');
 						cleanedNode.lon = $(this).attr('lon');
 						cleanedNode.ref = $(this).attr('id');
@@ -287,13 +288,14 @@ var app = new Vue({
 					},
 				],
 				submenuClasses: "submenu submenu-scoot-right",
-				footerSectionOne: "10.23.2287",
 				footerSectionTwo: "this is the Data menu",
 			},
 			{
 				name: "Map",
 				submenus: [],
-				footerSectionTwo: "this is the Map menu",
+				footerSectionOne: this.fakeDate,
+				footerSectionTwo: this.currentTime,
+				footerSectionThree: "Commonwealth",
 			},
 			{
 				name: "Radio",
@@ -307,6 +309,28 @@ var app = new Vue({
 		minLat: 0,
 		maxLon: 0,
 		maxLat: 0,
+		mapIcons: {
+			"pub": "images/map-icons/vault.png",
+			"nightclub": "images/map-icons/vault.png",
+			"bar": "images/map-icons/vault.png",
+			"fast_food": "images/map-icons/sewer.png",
+			"cafe": "images/map-icons/sewer.png",
+			"drinking_water": "images/map-icons/sewer.png",
+			"restaurant": "images/map-icons/settlement.png",
+			"cinema": "images/map-icons/office.png",
+			"pharmacy": "images/map-icons/office.png",
+			"school": "images/map-icons/office.png",
+			"bank": "images/map-icons/monument.png",
+			"townhall": "images/map-icons/monument.png",
+			"bicycle_parking": "images/map-icons/misc.png",
+			"place_of_worship": "images/map-icons/misc.png",
+			"theatre": "images/map-icons/misc.png",
+			"bus_station": "images/map-icons/misc.png",
+			"parking": "images/map-icons/misc.png",
+			"fountain": "images/map-icons/misc.png",
+			"marketplace": "images/map-icons/misc.png",
+			"atm": "images/map-icons/misc.png",
+		}
 	},
 	methods: {
 		switchMenu: function (index) {
@@ -349,14 +373,26 @@ var app = new Vue({
 						let starty = convertCoordsToPx(this.waypoints[i].points[j].lat, 'y');
 						let endx = convertCoordsToPx(this.waypoints[i].points[j+1].lon, 'x');
 						let endy = convertCoordsToPx(this.waypoints[i].points[j+1].lat, 'y');
-						console.log(startx, starty, endx, endy);
-						console.log(this.waypoints[i].points[j].lat, this.waypoints[i].points[j].lon, this.waypoints[i].points[j+1].lat,this.waypoints[i].points[j+1].lon);
 						ctx.strokeStyle="#5fFF80"; // should match $primary-text-color in styles.scss
+						ctx.fillStyle="#5fFF80";
 						ctx.moveTo(startx, starty);
 						ctx.lineTo(endx, endy);
 						ctx.stroke();
 					}
 				}
+			}
+			for(let i=0; i<this.mapNodes.length; i++) {
+				var c = document.getElementById("map-canvas");
+				var ctx = c.getContext("2d");
+				let img = new Image();
+				img.addEventListener('load', () => { // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Using_images
+					let x = convertCoordsToPx(this.mapNodes[i].lon, 'x');
+					let y = convertCoordsToPx(this.mapNodes[i].lat, 'y');
+					ctx.drawImage(img, x, y);
+					ctx.font = "10px Arial";
+					ctx.fillText(this.mapNodes[i].name, x-24, y+24);
+				}, false);
+				img.src = this.mapIcons[this.mapNodes[i].type];
 			}
 		}
 	},
@@ -377,6 +413,27 @@ var app = new Vue({
 				visibleSubMenus.push(this.menus[this.activeMenu].submenus[this.activeSubMenu+2]);
 			}
 			return visibleSubMenus;
+		},
+		currentTime: function () {
+			let time = new Date();
+			let currentHours = time.getHours();
+			var pm = false;
+			if (currentHours>12) {
+				currentHours -= 12;
+				pm = true;
+			}
+			let currentTime = ("0" + currentHours).slice(-2) + ":" + ("0" + time.getMinutes()).slice(-2);
+			if(pm) {
+				currentTime += " PM";
+			} else {
+				currentTime += " AM";
+			}
+			return currentTime;
+		},
+		fakeDate: function () {
+			let time = new Date();
+			let fakeDate = (time.getMonth() + 1) + "." + time.getDate() + "." +	(time.getFullYear() + 200);
+			return fakeDate;
 		}
 	},
 	mounted: function() {
