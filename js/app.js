@@ -15,6 +15,7 @@ Vue.component("mapel", {
 				app.maxLat = northBound;
 				let eastBound = (position.coords.longitude + 0.0025).toFixed(4);
 				app.minLon = eastBound;
+				$.get("https://www.openstreetmap.org/api/0.6/map?bbox=" + westBound + "," + southBound + "," + eastBound + "," + northBound, function(data) {
 					//nodes
 					let nodes = $(data).find("node").filter(function() {
 						return $(this).find("tag[k='name']").length && $(this).find("tag[k='amenity']").length;
