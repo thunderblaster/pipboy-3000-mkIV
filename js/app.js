@@ -22,7 +22,7 @@ Vue.component("mapel", {
 				let westBound = (position.coords.longitude - 0.0015).toFixed(4);
 				let northBound = (position.coords.latitude + 0.001).toFixed(4);
 				let eastBound = (position.coords.longitude + 0.0015).toFixed(4);
-				$.get("http://www.openstreetmap.org/api/0.6/map?bbox=" + westBound + "," + southBound + "," + eastBound + "," + northBound, function(data) {
+				$.get("https://www.openstreetmap.org/api/0.6/map?bbox=" + westBound + "," + southBound + "," + eastBound + "," + northBound, function(data) {
 					//nodes
 					let nodes = $(data).find("node").filter(function() {
 						return $(this).find("tag[k='name']").length;
