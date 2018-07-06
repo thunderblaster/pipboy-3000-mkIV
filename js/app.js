@@ -53,7 +53,6 @@ Vue.component("mapel", {
 						});
 						cleanedWaypoints.push(cleanedWaypoint);
 					});
-					//console.log(cleanedWaypoints);
 					app.waypoints = cleanedWaypoints;
 					app.drawMap();
 				});
@@ -61,15 +60,17 @@ Vue.component("mapel", {
 			function(error) {
 				/* error using geolocation */
 				if (error.code == error.PERMISSION_DENIED) {
-					console.log("geolocation permission denied :(");
+					console.log("geolocation permission denied, using default map data");
 				} else {
-					console.log(error);
+					console.log("geolocation error occurred, using default map data");
 				}
+				app.drawMap();
 			});
-		  } else {
+		} else {
 			/* geolocation IS NOT available */
-			console.log("geolocation failure :(");
-		  }
+			console.log("geolocation not available, using default map data");
+			app.drawMap();
+		}
 	},
 })
 
@@ -303,12 +304,12 @@ var app = new Vue({
 				footerSectionTwo: "this is the Radio menu",
 			},
 		],
-		mapNodes: [],
-		waypoints: [],
-		minLon: 0,
-		minLat: 0,
-		maxLon: 0,
-		maxLat: 0,
+		mapNodes: defaultMapNodes,
+		waypoints: defaultWaypoints,
+		minLon: defaultMinLon,
+		minLat: defaultMinLat,
+		maxLon: defaultMaxLon,
+		maxLat: defaultMaxLat,
 		mapIcons: {
 			"pub": "images/map-icons/vault.png",
 			"nightclub": "images/map-icons/vault.png",
