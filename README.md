@@ -3,6 +3,8 @@ inspired by [Pypboy](https://github.com/sabas1080/pypboy).  It aims to recreate 
 HTML/JS/CSS and allow it to be displayed in a browser instead of using Pygame.  This will allow the
 GUI to be responsive and gracefully resize to different resolutions.
 
+Try it in your browser here: [https://thunderblaster.github.io/pipboy-3000-mkIV/](https://thunderblaster.github.io/pipboy-3000-mkIV/)
+
 GOALS
 -----
 * Do not require internet connectivity. Ensure a raspberry pi without wifi is a first-class citizen.
