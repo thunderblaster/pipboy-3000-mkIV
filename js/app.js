@@ -21,12 +21,6 @@ Vue.component("mapel", {
 				app.maxLat = northBound;
 				let eastBound = (position.coords.longitude + 0.0035).toFixed(4);
 				app.maxLon = eastBound;
-				/*
-				console.log("westmost = " + westBound);
-				console.log("eastmost = " + eastBound);
-				console.log("southmost = " + southBound);
-				console.log("northmost = " + northBound);
-				*/
 				$.get("https://www.openstreetmap.org/api/0.6/map?bbox=" + westBound + "," + southBound + "," + eastBound + "," + northBound, function(data) {
 					//nodes
 					let nodes = $(data).find("node").filter(function() {
@@ -584,12 +578,14 @@ function convertCoordsToPx(coordValue, coordAxis) {
 
 	if(coordAxis==='y') {
 		let range = Math.abs(app.maxLat - app.minLat);
-		let relativePosition = (coordValue - app.minLat) / range;
-		return Math.round(relativePosition * canvasHeight);
+		let relativePosition = (app.maxLat - coordValue) / range;
+		let pixelDistance = Math.round(relativePosition * canvasHeight);
+		return pixelDistance;
 	} else if(coordAxis==='x') {
 		let range = Math.abs(app.maxLon - app.minLon);
 		let relativePosition = (coordValue - app.minLon) / range;
-		return Math.round(relativePosition * canvasWidth);
+		let pixelDistance = Math.round(relativePosition * canvasWidth);
+		return pixelDistance;
 	} else {
 		//should never get here
 		throw "bad coordAxis";
