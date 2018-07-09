@@ -16,11 +16,17 @@ Vue.component("mapel", {
 				let southBound = (position.coords.latitude - 0.0025).toFixed(4);
 				app.minLat = southBound;
 				let westBound = (position.coords.longitude - 0.0035).toFixed(4);
-				app.maxLon = westBound;
+				app.minLon = westBound;
 				let northBound = (position.coords.latitude + 0.0025).toFixed(4);
 				app.maxLat = northBound;
 				let eastBound = (position.coords.longitude + 0.0035).toFixed(4);
-				app.minLon = eastBound;
+				app.maxLon = eastBound;
+				/*
+				console.log("westmost = " + westBound);
+				console.log("eastmost = " + eastBound);
+				console.log("southmost = " + southBound);
+				console.log("northmost = " + northBound);
+				*/
 				$.get("https://www.openstreetmap.org/api/0.6/map?bbox=" + westBound + "," + southBound + "," + eastBound + "," + northBound, function(data) {
 					//nodes
 					let nodes = $(data).find("node").filter(function() {
@@ -577,13 +583,13 @@ function convertCoordsToPx(coordValue, coordAxis) {
 	let canvasHeight = document.getElementById("map-canvas").height;
 
 	if(coordAxis==='y') {
-		let range = app.maxLat - app.minLat;
+		let range = Math.abs(app.maxLat - app.minLat);
 		let relativePosition = (coordValue - app.minLat) / range;
-		return Math.abs(Math.round(relativePosition * canvasHeight));
+		return Math.round(relativePosition * canvasHeight);
 	} else if(coordAxis==='x') {
-		let range = app.maxLon - app.minLon;
+		let range = Math.abs(app.maxLon - app.minLon);
 		let relativePosition = (coordValue - app.minLon) / range;
-		return Math.abs(Math.round(relativePosition * canvasWidth));
+		return Math.round(relativePosition * canvasWidth);
 	} else {
 		//should never get here
 		throw "bad coordAxis";
