@@ -307,6 +307,12 @@ li.equipped > .list-item {
   height: 80%;
 }
 
+body > canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 @media (max-width: 900px) {
   body {
     font-size: 120%;
