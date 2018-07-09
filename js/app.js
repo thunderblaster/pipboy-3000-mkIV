@@ -13,13 +13,13 @@ Vue.component("mapel", {
 			console.log("geolocation available!");
 			navigator.geolocation.getCurrentPosition(function(position) {
 				console.log(position.coords.latitude, position.coords.longitude);
-				let southBound = (position.coords.latitude - 0.0015).toFixed(4);
+				let southBound = (position.coords.latitude - 0.0025).toFixed(4);
 				app.minLat = southBound;
-				let westBound = (position.coords.longitude - 0.0025).toFixed(4);
+				let westBound = (position.coords.longitude - 0.0035).toFixed(4);
 				app.maxLon = westBound;
-				let northBound = (position.coords.latitude + 0.0015).toFixed(4);
+				let northBound = (position.coords.latitude + 0.0025).toFixed(4);
 				app.maxLat = northBound;
-				let eastBound = (position.coords.longitude + 0.0025).toFixed(4);
+				let eastBound = (position.coords.longitude + 0.0035).toFixed(4);
 				app.minLon = eastBound;
 				$.get("https://www.openstreetmap.org/api/0.6/map?bbox=" + westBound + "," + southBound + "," + eastBound + "," + northBound, function(data) {
 					//nodes
