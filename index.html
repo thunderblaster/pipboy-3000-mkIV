@@ -93,6 +93,9 @@
 				<span v-if="activeMenu===3||activeMenu===2">
 					{{fakeDate}}
 				</span>
+				<span v-else-if="activeMenu===1">
+					Weight: {{weightCarried}}/50
+				</span>
 				<span v-else>
 					{{menus[activeMenu].footerSectionOne}}
 				</span>

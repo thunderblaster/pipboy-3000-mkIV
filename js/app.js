@@ -1,3 +1,7 @@
+const menuChangeSound = new Audio('sounds/module_change.ogg');
+const subMenuChangeSound = new Audio('sounds/submodule_change.ogg');
+const radioStationChangeSound = new Audio('sounds/dial_move.ogg');
+
 Vue.component("invstats", {
 	props: ["item"],
 	template: `<table><tr v-for="property in item.properties"><td class="table-key">{{property.name}}</td>
@@ -364,7 +368,6 @@ var app = new Vue({
 					},
 				],
 				submenuClasses: "submenu",
-				footerSectionOne: "Weight: 5/50", //this should be a computed value that updates based on items in inventory
 				footerSectionTwo: "126",
 			},
 			{
@@ -450,11 +453,13 @@ var app = new Vue({
 	},
 	methods: {
 		switchMenu: function (index) {
+			menuChangeSound.play();
 			this.activeSubMenu = 0;
 			this.activeListItem = 0;
 			this.activeMenu = index;
 		},
 		switchSubMenu: function (index) {
+			subMenuChangeSound.play();
 			this.activeListItem = 0;
 			this.activeSubMenu = index;
 		},
@@ -565,7 +570,21 @@ var app = new Vue({
 			let time = new Date();
 			let fakeDate = (time.getMonth() + 1) + "." + time.getDate() + "." +	(time.getFullYear() + 200);
 			return fakeDate;
-		}
+		},
+		weightCarried: function() {
+			let weight = 0;
+			function getWeightProperty(property) {
+				console.log(property.name);
+				return property.name === "Weight";
+			}
+			for(let i=0; i<this.menus[1].submenus.length; i++) {
+				for(let j=0; j<this.menus[1].submenus[i].items.length; j++) {
+					let weightProperty = this.menus[1].submenus[i].items[j].properties.filter(getWeightProperty);
+					weight += Number(weightProperty[0].value);
+				}
+			}
+			return weight.toFixed(1);
+		},
 	},
 	mounted: function() {
 		window.addEventListener('keyup', this.keyEventHandler);
