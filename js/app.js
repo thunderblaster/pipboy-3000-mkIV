@@ -393,18 +393,190 @@ var app = new Vue({
 						items: [
 							{
 								name: "General",
+								properties: [
+									{
+										name: "Locations Discovered",
+										value: "145",
+									},
+									{
+										name: "Locations Cleared",
+										value: "0",
+									},
+									{
+										name: "Days Passed",
+										value: "10767",
+									},
+									{
+										name: "Hours Slept",
+										value: "2691",
+									},
+									{
+										name: "Hours Waiting",
+										value: "3006",
+									},
+									{
+										name: "Caps Found",
+										value: "143",
+									},
+									{
+										name: "Most Caps Carried",
+										value: "176",
+									},
+									{
+										name: "Junk Collected",
+										value: "438",
+									},
+									{
+										name: "Chests Looted",
+										value: "2",
+									},
+									{
+										name: "Magazines Found",
+										value: "20",
+									},
+									//truncated
+								]
 							},
 							{
 								name: "Quest",
+								properties: [
+									{
+										name: "Quests Completed",
+										value: "0",
+									},
+									{
+										name: "Misc Objectives Completed",
+										value: "0",
+									},
+									{
+										name: "Main Quests Completed",
+										value: "0",
+									},
+									{
+										name: "Side Quests Completed",
+										value: "503",
+									},
+								]
 							},
 							{
 								name: "Combat",
+								properties: [
+									{
+										name: "People Killed",
+										value: "0",
+									},
+									{
+										name: "Animals Killed",
+										value: "0",
+									},
+									{
+										name: "Creatures Killed",
+										value: "0",
+									},
+									{
+										name: "Robots Killed",
+										value: "5",
+									},
+									{
+										name: "Synths Killed",
+										value: "0",
+									},
+									{
+										name: "Turrets Killed",
+										value: "0",
+									},
+									{
+										name: "Legendary Enemies Killed",
+										value: "0",
+									},
+									{
+										name: "Critical Strikes",
+										value: "0",
+									},
+									{
+										name: "Sneak Attacks",
+										value: "0",
+									},
+									{
+										name: "Backstabs",
+										value: "0",
+									},
+									//truncated
+								]
 							},
 							{
 								name: "Crafting",
+								properties: [
+									{
+										name: "Weapon Mods Crafted",
+										value: "0",
+									},
+									{
+										name: "Armor Mods Crafted",
+										value: "0",
+									},
+									{
+										name: "Plants Harvested",
+										value: "48",
+									},
+									{
+										name: "Chems Crafted",
+										value: "0",
+									},
+									{
+										name: "Food Cooked",
+										value: "1243",
+									},
+									{
+										name: "Workshops Unlocked",
+										value: "2",
+									},
+									{
+										name: "Items Scrapped",
+										value: "33",
+									},
+									{
+										name: "Objects Built",
+										value: "14",
+									},
+									{
+										name: "Supply Lines Created",
+										value: "0",
+									},
+								]
 							},
 							{
 								name: "Crime",
+								properties: [
+									{
+										name: "Locks Picked",
+										value: "0",
+									},
+									{
+										name: "Computers Hacked",
+										value: "4",
+									},
+									{
+										name: "Pockets Picked",
+										value: "1",
+									},
+									{
+										name: "Items Stolen",
+										value: "3",
+									},
+									{
+										name: "Assaults",
+										value: "0",
+									},
+									{
+										name: "Murders",
+										value: "0",
+									},
+									{
+										name: "Trespasses",
+										value: "24",
+									},
+								]
 							},
 						]
 					},

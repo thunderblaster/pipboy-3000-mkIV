@@ -52,7 +52,7 @@
 						<div class="description" v-if="menus[activeMenu].submenus[activeSubMenu].items[activeListItem].text">
 							<p>{{menus[activeMenu].submenus[activeSubMenu].items[activeListItem].text}}</p>
 						</div>
-						<div class="item-stats" v-else-if="activeMenu===1">
+						<div class="item-stats" v-else-if="activeMenu===1||(activeMenu===2&&activeSubMenu===2)">
 							<invstats :item="menus[activeMenu].submenus[activeSubMenu].items[activeListItem]"></invstats>
 						</div>
 						<div class="description" v-else>
